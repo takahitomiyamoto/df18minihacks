@@ -1,0 +1,19 @@
+<aura:component implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global">
+
+  <aura:attribute name="wholeValue" type="Decimal" default="200" />
+  <aura:attribute name="percentageValue" type="Decimal" default="20" />
+
+  <lightning:card footer="Dynamic Percentage Calculator" title="Percentage">
+    <p class="slds-p-horizontal_small">
+      <lightning:input name="wholeValue" value="{!v.wholeValue}" placeholder="Whole Value..." label="Whole Value" />
+    </p>
+    <p class="slds-p-horizontal_small">
+      <lightning:input name="percentageValue" value="{!v.percentageValue}" placeholder="Percentage..." label="Percentage" />
+    </p>
+    <br />
+    <p class="slds-p-horizontal_small">
+      {!v.percentageValue} percentage of {!v.wholeValue} is {!v.wholeValue * (v.percentageValue / 100)}
+    </p>
+  </lightning:card>
+
+</aura:component>

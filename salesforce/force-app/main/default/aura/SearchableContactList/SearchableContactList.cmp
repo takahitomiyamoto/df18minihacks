@@ -1,0 +1,42 @@
+<aura:component controller="ContactController" implements="flexipage:availableForRecordHome,force:hasRecordId" access="global">
+
+  <aura:attribute name="contacts" type="Contact[]" />
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+  <lightning:card footer="Searchable Contact Listr" title="Contacts">
+    <p class="slds-p-horizontal_small">
+      <lightning:input aura:id="contactName" name="contactName" label="Contact Name" type="search" onchange="{!c.handleChange}" />
+    </p>
+    <br />
+    <aura:iteration var="contact" items="{!v.contacts}">
+      <p class="slds-p-horizontal_small">
+        <lightning:tile label="{!contact.Name}" href="{!'/' + contact.Id}">
+          <aura:set attribute="media">
+            <lightning:icon iconName="standard:contact" />
+          </aura:set>
+          <dl class="slds-dl_horizontal">
+            <dt class="slds-dl_horizontal__label">
+              <p class="slds-truncate" title="Title">Title:</p>
+            </dt>
+            <dd class="slds-dl_horizontal__detail slds-tile__meta">
+              <p class="slds-truncate" title="{!contact.Title}">{!contact.Title}</p>
+            </dd>
+            <dt class="slds-dl_horizontal__label">
+              <p class="slds-truncate" title="Email">Email:</p>
+            </dt>
+            <dd class="slds-dl_horizontal__detail slds-tile__meta">
+              <p class="slds-truncate" title="{!contact.Email}">{!contact.Email}</p>
+            </dd>
+            <dt class="slds-dl_horizontal__label">
+              <p class="slds-truncate" title="Phone">Phone:</p>
+            </dt>
+            <dd class="slds-dl_horizontal__detail slds-tile__meta">
+              <p class="slds-truncate" title="{!contact.Phone}">{!contact.Phone}</p>
+            </dd>
+          </dl>
+        </lightning:tile>
+      </p>
+    </aura:iteration>
+  </lightning:card>
+
+</aura:component>

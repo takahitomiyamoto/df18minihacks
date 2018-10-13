@@ -1,0 +1,15 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId">
+
+  <aura:attribute name="recordId" type="Id" />
+  <aura:attribute name="contact" type="Contact" />
+  <aura:attribute name="accountFields" type="String[]" default="Name,Phone" />
+
+  <force:recordData aura:id="contactRecord" recordId="{!v.recordId}" targetFields="{!v.contact}" layoutType="FULL" />
+  <lightning:card iconName="standard:account" title="Related Account">
+    <div class="slds-p-left_large slds-p-right_medium">
+      <lightning:recordForm aura:id="accountForm" recordId="{!v.contact.AccountId}" objectApiName="Account" fields="{!v.accountFields}"
+        columns="2" mode="View" />
+    </div>
+  </lightning:card>
+
+</aura:component>
